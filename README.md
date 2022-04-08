@@ -62,7 +62,7 @@ favoritos. Para ello, al hacer clic sobre una cóctel debe pasar lo siguiente:
 Hay que almacenar el listado de favoritos en el localStorage. De esta forma, al recargar la página el listado
 de favoritos se debe mostrarse.
 
-## 5. BONUS: borrar favoritos
+### 5. BONUS: borrar favoritos
 
 Como bonus, os proponemos la opción de borrar favoritos. Al hacer clic sobre el icono de una `x` al lado de
 cada favorito, hay que borrar el favorito clicado de la lista y del localStorage.
