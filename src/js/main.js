@@ -23,7 +23,19 @@ function renderCocktailList() {
   const emptyImg =
     'https://via.placeholder.com/210x295/ffffff/666666/?text=drink';
   for (const drinkItem of drinks) {
-    if (drinkItem.strDrinkThumb !== null) {
+    const favoritesList = document.querySelector('.js-favoritesList');
+
+    const foundFavoriteIndex = favoriteCocktails.findIndex((favCocktail) => {
+      return favCocktail.idDrink === drinkItem.idDrink;
+    });
+
+    if (foundFavoriteIndex !== -1) {
+      html += `<li id="${drinkItem.idDrink}">`;
+      html += `<img alt="Cóctel" class="cocktailImg" src="${drinkItem.strDrinkThumb}" />`;
+      html += `<h3>${drinkItem.strDrink}</h3>`;
+      html += `</li>`;
+      favoritesList.innerHTML = html;
+    } else if (drinkItem.strDrinkThumb !== null) {
       html += `<li class="cocktail js-cocktail" id="${drinkItem.idDrink}">`;
       // strImageSource tiene DEMASIADAS rutas null
       html += `<img alt="Cóctel" class="cocktailImg" src="${drinkItem.strDrinkThumb}" />`;
