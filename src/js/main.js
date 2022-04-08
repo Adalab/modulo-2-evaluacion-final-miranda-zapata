@@ -6,25 +6,42 @@ const inputSearch = document.querySelector('.js-search');
 // Array info
 let drinks = [];
 
+// Handle function
+function handleClickCocktail(event) {
+  console.log('Holis');
+  console.log(event.currentTarget.id);
+}
+
+// Listener (click event) for each cocktail
+function cocktailListener() {
+  const cocktailListItem = document.querySelectorAll('.js-cocktail');
+  for (const listItem of cocktailListItem) {
+    listItem.addEventListener('click', handleClickCocktail);
+  }
+}
+
 // Paint/render HTML
 function renderCocktailList() {
   let html = '';
-  // Constante de la imagen de relleno
+  // Const from the placeholder image
   const emptyImg =
     'https://via.placeholder.com/210x295/ffffff/666666/?text=drink';
   for (const drinkItem of drinks) {
     if (drinkItem.strDrinkThumb !== null) {
-      html += `<li>`;
+      html += `<li class="cocktail js-cocktail" id="${drinkItem.idDrink}">`;
       html += `<img alt="Cóctel" class="cocktailImg" src="${drinkItem.strDrinkThumb}" />`;
       html += `<h3>${drinkItem.strDrink}</h3>`;
       html += `</li>`;
     } else {
-      html += `<li>`;
+      html += `<li class="cocktail js-cocktail" id="${drinkItem.idDrink}">`;
       html += `<img alt="Cóctel" class="cocktailImg" src="${emptyImg}" />`;
       html += `<h3>${drinkItem.strDrink}</h3>`;
       html += `</li>`;
     }
     cocktailList.innerHTML = html;
+
+    // Listener for each cocktail
+    cocktailListener();
   }
 }
 
