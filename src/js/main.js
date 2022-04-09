@@ -113,6 +113,7 @@ function handleClickCocktail(event) {
 // Filtrar los resultados del input de búsqueda con una función manejadora del evento click del botón "buscar"
 function handleInputSearch(event) {
   event.preventDefault();
+  validateInputValue();
 
   // Constante para el cóctel buscado
   const filterValue = inputSearch.value;
@@ -153,6 +154,8 @@ getFavCocktailsLS();
 function handleClickReset(event) {
   event.preventDefault();
 
+  inputSearch.value = '';
+
   // drinks = [];
   favoriteCocktails = [];
 
@@ -160,6 +163,14 @@ function handleClickReset(event) {
   favoritesList.innerHTML = '';
 
   localStorage.removeItem('favoriteCocktails');
+}
+
+// Función para verificar que el input tiene una opción por defecto (cuando no se introduce un valor)
+function validateInputValue() {
+  if (inputSearch.value === '') {
+    alert('Busca un cóctel para empezar');
+    handleClickReset();
+  }
 }
 
 // Listener (evento clic) del botón de búsqueda
