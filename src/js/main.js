@@ -99,19 +99,12 @@ function handleClickCocktail(event) {
   if (foundFavoriteIndex === -1) {
     // No encontrado
     favoriteCocktails.push(foundCocktail);
-    localStorage.setItem(
-      'favoriteCocktails',
-      JSON.stringify(favoriteCocktails)
-    );
   } else {
     // Eliminar de la lista de favoritos
     favoriteCocktails.splice(foundFavoriteIndex, 1);
-    localStorage.setItem(
-      'favoriteCocktails',
-      JSON.stringify(favoriteCocktails)
-    );
   }
   console.log(favoriteCocktails); // Ver en la consola que los cócteles se quitan y se ponen
+  localStorage.setItem('favoriteCocktails', JSON.stringify(favoriteCocktails));
   renderCocktailList();
   renderFavoriteCocktails();
 }
@@ -148,9 +141,7 @@ function handleInputSearch(event) {
 // Local storage
 function getFavCocktailsLS() {
   const savedFavorites = localStorage.getItem('favoriteCocktails');
-  if (savedFavorites === null) {
-    favoriteCocktails = [];
-  } else {
+  if (savedFavorites !== null) {
     favoriteCocktails = JSON.parse(savedFavorites);
     renderFavoriteCocktails();
   }
