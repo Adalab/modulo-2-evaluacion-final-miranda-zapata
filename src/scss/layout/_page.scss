@@ -6,3 +6,21 @@
 .favCocktailName {
   color: white;
 }
+
+// Clase para visualizar mejor las imágenes
+.cocktailImg {
+  width: 150px;
+}
+
+// Hay que mostrar un listado en la parte izquierda de la pantalla, debajo del formulario de búsqueda, con los cócteles favoritos
+.sectionLists {
+  display: flex;
+}
+
+.favorites {
+  width: 50vw;
+}
+
+.list {
+  width: 50vw;
+}
