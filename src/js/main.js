@@ -66,14 +66,14 @@ function renderFavoriteCocktails() {
 
   for (const drinkItem of favoriteCocktails) {
     if (drinkItem.strDrinkThumb !== null) {
-      html += `<li class="cocktail js-cocktail" id="${drinkItem.idDrink}">`;
+      html += `<li class="js-cocktail" id="${drinkItem.idDrink}">`;
       html += `<img alt="Cóctel" class="cocktailImg" src="${drinkItem.strDrinkThumb}" />`;
-      html += `<h3 class="cocktailName">${drinkItem.strDrink}</h3>`;
+      html += `<h3>${drinkItem.strDrink}</h3>`;
       html += `</li>`;
     } else {
-      html += `<li class="cocktail js-cocktail" id="${drinkItem.idDrink}">`;
+      html += `<li class="js-cocktail" id="${drinkItem.idDrink}">`;
       html += `<img alt="Cóctel" class="cocktailImg" src="${defaultImg}" />`;
-      html += `<h3 class="cocktailName">${drinkItem.strDrink}</h3>`;
+      html += `<h3>${drinkItem.strDrink}</h3>`;
       html += `</li>`;
     }
   }
