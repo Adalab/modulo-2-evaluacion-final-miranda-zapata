@@ -2,6 +2,8 @@
 // Datos HTML
 const cocktailList = document.querySelector('.js-cocktailList');
 const inputSearch = document.querySelector('.js-search');
+const btnSubmit = document.querySelector('.js-submitBtn');
+
 // Constante para la imagen por defecto
 const defaultImg =
   'https://via.placeholder.com/210x295/ffffff/666666/?text=drink';
@@ -106,15 +108,30 @@ function handleClickCocktail(event) {
   renderFavoriteCocktails();
 }
 
-// Fetch al servidor de los cócteles
-fetch(
-  `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${inputSearch.value}`
-)
-  .then((response) => response.json())
-  .then((data) => {
-    // Guardar la información de los cócteles
-    drinks = data.drinks;
+// Filtrar los resultados del input de búsqueda con una función manejadora del evento click del botón "buscar"
+function handleInputSearch(event) {
+  event.preventDefault();
 
-    // Paint/render HTML
-    renderCocktailList();
-  });
+  // Constante para el cóctel buscado (fuera de la tunción handleInputSearch porque también lo usamos en el fetch)
+  const filterValue = inputSearch.value;
+
+  // Fetch al servidor de los cócteles
+  fetch(
+    `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${filterValue}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      // Guardar la información de los cócteles en su variable global
+      drinks = data.drinks;
+      const filteredList = drinks.filter((drinkItem) => {
+        return drinkItem.strDrink
+          .toLowerCase()
+          .includes(filterValue.toLowerCase());
+      });
+      drinks = filteredList;
+      renderCocktailList(drinks);
+
+      console.log(filterValue);
+    });
+}
+btnSubmit.addEventListener('click', handleInputSearch);
