@@ -24,16 +24,32 @@ function renderCocktailList() {
   let html = '';
 
   for (const drinkItem of drinks) {
+    // Variables que dan clases para resaltar el seleccionado como favorito
+    let favoriteClass = '';
+    let favoriteClassName = '';
+
+    const foundFavoriteIndex = favoriteCocktails.findIndex((favCocktail) => {
+      return favCocktail.idDrink === drinkItem.idDrink;
+    });
+
+    if (foundFavoriteIndex !== -1) {
+      favoriteClass = 'favCocktail';
+      favoriteClassName = 'favCocktailName';
+    } else {
+      favoriteClass = '';
+      favoriteClassName = '';
+    }
+
     if (drinkItem.strDrinkThumb !== null) {
-      html += `<li class="cocktail js-cocktail" id="${drinkItem.idDrink}">`;
+      html += `<li class="${favoriteClass} js-cocktail" id="${drinkItem.idDrink}">`;
       // strImageSource tiene DEMASIADAS rutas null
       html += `<img alt="Cóctel" class="cocktailImg" src="${drinkItem.strDrinkThumb}" />`;
-      html += `<h3>${drinkItem.strDrink}</h3>`;
+      html += `<h3 class="${favoriteClassName}">${drinkItem.strDrink}</h3>`;
       html += `</li>`;
     } else {
-      html += `<li class="cocktail js-cocktail" id="${drinkItem.idDrink}">`;
+      html += `<li class="${favoriteClass} js-cocktail" id="${drinkItem.idDrink}">`;
       html += `<img alt="Cóctel" class="cocktailImg" src="${defaultImg}" />`;
-      html += `<h3>${drinkItem.strDrink}</h3>`;
+      html += `<h3 class="${favoriteClassName}">${drinkItem.strDrink}</h3>`;
       html += `</li>`;
     }
     cocktailList.innerHTML = html;
@@ -52,12 +68,12 @@ function renderFavoriteCocktails() {
     if (drinkItem.strDrinkThumb !== null) {
       html += `<li class="cocktail js-cocktail" id="${drinkItem.idDrink}">`;
       html += `<img alt="Cóctel" class="cocktailImg" src="${drinkItem.strDrinkThumb}" />`;
-      html += `<h3>${drinkItem.strDrink}</h3>`;
+      html += `<h3 class="cocktailName">${drinkItem.strDrink}</h3>`;
       html += `</li>`;
     } else {
       html += `<li class="cocktail js-cocktail" id="${drinkItem.idDrink}">`;
       html += `<img alt="Cóctel" class="cocktailImg" src="${defaultImg}" />`;
-      html += `<h3>${drinkItem.strDrink}</h3>`;
+      html += `<h3 class="cocktailName">${drinkItem.strDrink}</h3>`;
       html += `</li>`;
     }
   }
