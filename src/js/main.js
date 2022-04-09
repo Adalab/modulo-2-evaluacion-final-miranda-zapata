@@ -108,11 +108,18 @@ function handleClickCocktail(event) {
   renderFavoriteCocktails();
 }
 
+// Local storage
+const cocktailListStorage = JSON.parse(localStorage.getItem('cocktailListLS'));
+if (cocktailListStorage !== null) {
+  favoriteCocktails = cocktailListStorage;
+  renderFavoriteCocktails(favoriteCocktails);
+}
+
 // Filtrar los resultados del input de búsqueda con una función manejadora del evento click del botón "buscar"
 function handleInputSearch(event) {
   event.preventDefault();
 
-  // Constante para el cóctel buscado (fuera de la tunción handleInputSearch porque también lo usamos en el fetch)
+  // Constante para el cóctel buscado
   const filterValue = inputSearch.value;
 
   // Fetch al servidor de los cócteles
@@ -123,15 +130,19 @@ function handleInputSearch(event) {
     .then((data) => {
       // Guardar la información de los cócteles en su variable global
       drinks = data.drinks;
-      const filteredList = drinks.filter((drinkItem) => {
+
+      // const filteredList =
+      /* drinks.filter((drinkItem) => {
         return drinkItem.strDrink
           .toLowerCase()
           .includes(filterValue.toLowerCase());
-      });
-      drinks = filteredList;
-      renderCocktailList(drinks);
+      }); */
+      // drinks = filteredList;
+      renderCocktailList();
 
       console.log(filterValue);
     });
 }
+
+// Listener (evento clic) del botón de búsqueda
 btnSubmit.addEventListener('click', handleInputSearch);
