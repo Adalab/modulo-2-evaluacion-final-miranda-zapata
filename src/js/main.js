@@ -3,6 +3,7 @@
 const cocktailList = document.querySelector('.js-cocktailList');
 const inputSearch = document.querySelector('.js-search');
 const btnSubmit = document.querySelector('.js-submitBtn');
+const btnReset = document.querySelector('.js-resetBtn');
 
 // Constante para la imagen por defecto
 const defaultImg =
@@ -60,11 +61,11 @@ function renderCocktailList() {
   cocktailListener();
 }
 
+const favoritesList = document.querySelector('.js-favoritesList');
+
 // Pintar/renderizar la lista de cócteles favoritos
 function renderFavoriteCocktails() {
   let html = '';
-
-  const favoritesList = document.querySelector('.js-favoritesList');
 
   for (const drinkItem of favoriteCocktails) {
     if (drinkItem.strDrinkThumb !== null) {
@@ -148,5 +149,19 @@ function getFavCocktailsLS() {
 }
 getFavCocktailsLS();
 
+// Función manejadora para el botón de reset
+function handleClickReset(event) {
+  event.preventDefault();
+
+  // drinks = [];
+  favoriteCocktails = [];
+
+  cocktailList.innerHTML = '';
+  favoritesList.innerHTML = '';
+
+  localStorage.removeItem('favoriteCocktails');
+}
+
 // Listener (evento clic) del botón de búsqueda
 btnSubmit.addEventListener('click', handleInputSearch);
+btnReset.addEventListener('click', handleClickReset);
