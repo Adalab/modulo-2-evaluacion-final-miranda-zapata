@@ -10,6 +10,8 @@ const defaultImage =
 const btnSubmit = document.querySelector('.js-submitBtn');
 const btnReset = document.querySelector('.js-resetBtn');
 
+const btnDislikeAll = document.querySelector('.js-dislikeAll');
+
 // Variables (arrays)
 let drinks = [];
 let favoriteCocktails = [];
@@ -115,6 +117,15 @@ function dislikedListener() {
   }
 }
 
+function handleDislikeAllFavs(event) {
+  event.preventDefault();
+  // inputSearch.value = '';
+  favoriteCocktails = [];
+  favoritesList.innerHTML = '';
+  localStorage.removeItem('favoriteCocktails');
+  renderCocktailList();
+}
+
 function handleClickCocktail(event) {
   const selectedCocktailId = event.currentTarget.id;
   const foundCocktail = drinks.find((favCocktail) => {
@@ -151,7 +162,7 @@ function handleClickReset(event) {
   favoriteCocktails = [];
   cocktailList.innerHTML = '';
   favoritesList.innerHTML = '';
-  localStorage.removeItem('favoriteCocktails');
+  localStorage.clear('favoriteCocktails');
 }
 
 function getFavLocalStorage() {
@@ -168,3 +179,4 @@ getFavLocalStorage();
 // Listeners
 btnSubmit.addEventListener('click', handleInputSearch);
 btnReset.addEventListener('click', handleClickReset);
+btnDislikeAll.addEventListener('click', handleDislikeAllFavs);
