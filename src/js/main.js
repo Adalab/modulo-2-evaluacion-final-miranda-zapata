@@ -83,8 +83,8 @@ function renderFavoriteCocktails() {
     // let favoriteClassName = '';
     let imageSrc = generateDefaultImage(drinkItem);
 
-    html += `<li class="js-unfav" id="${drinkItem.idDrink}">`;
-    html += `<i class="fa-solid fa-heart-circle-xmark" id="unfav"></i>`;
+    html += `<li>`;
+    html += `<i class="js-unfav fa-solid fa-heart-circle-xmark" id="${drinkItem.idDrink}"></i>`;
     html += `<img alt="Cóctel" class="cocktailImg" src="${imageSrc}" />`;
     html += `<h3>${drinkItem.strDrink}</h3>`;
     html += `</li>`;
