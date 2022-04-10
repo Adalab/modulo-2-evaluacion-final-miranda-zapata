@@ -67,9 +67,9 @@ function renderCocktailList() {
       favoriteClassName = '';
     }
 
-    html += `<li class="${favoriteClass} js-cocktail" id="${drinkItem.idDrink}">`;
+    html += `<li class="cocktailList__item ${favoriteClass} js-cocktail" id="${drinkItem.idDrink}">`;
     html += `<img alt="Cóctel" class="cocktailImg" src="${imageSrc}" />`;
-    html += `<h3 class="${favoriteClassName}">${drinkItem.strDrink}</h3>`;
+    html += `<h3 class="favoritesList__name ${favoriteClassName}">${drinkItem.strDrink}</h3>`;
     html += `</li>`;
 
     cocktailList.innerHTML = html;
@@ -85,10 +85,10 @@ function renderFavoriteCocktails() {
     // let favoriteClassName = '';
     let imageSrc = generateDefaultImage(drinkItem);
 
-    html += `<li>`;
-    html += `<i class="js-unfav fa-solid fa-heart-circle-xmark" id="${drinkItem.idDrink}"></i>`;
+    html += `<li class="favoritesList__item">`;
     html += `<img alt="Cóctel" class="cocktailImg" src="${imageSrc}" />`;
-    html += `<h3>${drinkItem.strDrink}</h3>`;
+    html += `<h3 class="favoritesList__name">${drinkItem.strDrink}</h3>`;
+    html += `<i class="favoritesList__icon js-unfav fa-solid fa-heart-circle-xmark" id="${drinkItem.idDrink}"></i>`;
     html += `</li>`;
   }
   favoritesList.innerHTML = html;

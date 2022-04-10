@@ -1,0 +1,12 @@
+.footer {
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 0 25px 25px;
+
+  .copyright {
+    color: $davysGrey;
+    font-size: small;
+  }
+}

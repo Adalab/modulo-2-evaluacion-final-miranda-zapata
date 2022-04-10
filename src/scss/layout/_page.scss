@@ -1,26 +1,116 @@
-// Clases para diferenciar los cócteles seleccionados como favoritos
-.favCocktail {
-  background-color: black;
-}
+.main {
+  min-height: calc(100vh - 300px);
+  gap: 25px;
 
-.favCocktailName {
-  color: white;
-}
+  .favCocktail {
+    border: solid 2px;
+    border-color: $verdigris;
+  }
 
-// Clase para visualizar mejor las imágenes
-.cocktailImg {
-  width: 150px;
-}
+  .favCocktailName {
+    color: $verdigris;
+  }
 
-// Hay que mostrar un listado en la parte izquierda de la pantalla, debajo del formulario de búsqueda, con los cócteles favoritos
-.sectionLists {
-  display: flex;
-}
+  .cocktailImg {
+    width: 150px;
+  }
 
-.favorites {
-  width: 50vw;
-}
+  .sectionLists {
+    display: flex;
+    justify-content: space-around;
+  }
 
-.list {
-  width: 50vw;
+  .favorites {
+    border: solid 2px;
+    border-color: $black;
+    width: min-content;
+    border-radius: 5px;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    @media all and (min-width: 768px) {
+      justify-content: space-between;
+    }
+
+    &__title {
+      background-color: $black;
+      color: $antiFlashWhite;
+      text-align: center;
+      padding: 10px;
+      width: 435px;
+    }
+  }
+
+  .favoritesList {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &__item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+      width: 415px;
+      margin: 10px;
+      color: $black;
+    }
+
+    &__name {
+      min-width: 15ch;
+      margin-left: 5px;
+      margin-right: 5px;
+      padding: 5px;
+    }
+
+    &__icon {
+      font-size: xx-large;
+    }
+  }
+
+  .deleteFavs {
+    background-color: $black;
+    color: $antiFlashWhite;
+    height: 25px;
+    width: 225px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px 5px;
+  }
+
+  .list {
+    border: solid 2px;
+    border-color: $antiFlashWhite;
+    width: calc(100vw - 275px);
+    border-radius: 5px;
+    margin: 0 10px;
+  }
+
+  .cocktailList {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      width: 175px;
+      margin: 10px;
+    }
+  }
+
+  .listTitle {
+    background-color: $antiFlashWhite;
+    color: $black;
+    text-align: center;
+    padding: 10px;
+  }
 }

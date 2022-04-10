@@ -1,26 +1,15 @@
-<main>
-  <section class="search">
-    <form class="">
-      <input
-        class="search js-search"
-        name="search"
-        placeholder="P. ej. Sex on the Beach"
-        type="text"
-      />
-      <input class="js-submitBtn" type="submit" value="Buscar" />
-      <input class="js-resetBtn" type="reset" value="Reset" />
-    </form>
-  </section>
-
+<main class="main">
   <section class="sectionLists">
     <article class="favorites">
-      <h2 class="">Cócteles favoritos</h2>
-      <ul class="favoritesList js-favoritesList"></ul>
-      <button class="js-dislikeAll">Borrar todos los favoritos</button>
+      <h2 class="favorites__title">Cócteles favoritos</h2>
+      <ul class="favorites__list js-favoritesList"></ul>
+      <button class="deleteFavs js-dislikeAll">
+        Borrar todos los favoritos
+      </button>
     </article>
 
     <article class="list">
-      <h2 class="">Lista</h2>
+      <h2 class="listTitle">Lista</h2>
       <ul class="cocktailList js-cocktailList"></ul>
     </article>
   </section>
