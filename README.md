@@ -1,5 +1,23 @@
 # Módulo 2. Evaluación final
 
+## Guía de inicio rápido
+
+> **NOTA:** Necesitas tener instalado [Node JS](https://nodejs.org/).
+
+1. Instala las dependencias locales ejecutando este comando en la terminal:
+
+```bash
+npm install
+```
+
+2. Una vez hemos instalado las dependencias, el proyecto se arranca ejecutando:
+
+```bash
+npm start
+```
+
+que abrirá una ventana del navegador y mostrará la página web (como haría el plugin de VSCode Live Server).
+
 ## Enunciado
 
 El ejercicio consiste en desarrollar una aplicación web que contiene un listado de las bebidas y cócteles de
@@ -21,6 +39,8 @@ La aplicación de búsqueda de cócteles consta de dos partes:
 1. Un campo de texto y un botón para buscar un cóctel por su título.
 2. Un listado de resultados de búsqueda donde aparece la imagen del cóctel y el nombre.
 
+![diseño_sugerido](url)
+
 ### 2. Búsqueda
 
 - Al hacer clic sobre el botón de **Buscar**, la aplicación debe conectarse al [API abierto de
@@ -38,12 +58,8 @@ La aplicación de búsqueda de cócteles consta de dos partes:
 - Para pintar la información en la página se puede elegir entre hacerlo de forma básica con `innerHTML`
   o manipulando de forma avanzada el DOM.
 
-```
-Notas:
-Usad la dirección del enlace anterior, pero sin https: ni http:
-[www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita]
-Usad ev.preventDefault() para evitar que se recargue la página involuntariamente.
-```
+> **Notas**: Usad la dirección del enlace anterior, pero sin https: ni http: [www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita]  
+> Usad ev.preventDefault() para evitar que se recargue la página involuntariamente.
 
 ### 3. Favoritos
 
@@ -78,9 +94,9 @@ Y ya sería fantástico si al final de la lista de favoritos hay un botón para 
 Una vez terminada la parte de interacción, podemos centrarnos en la parte de maquetación donde tenéis
 libertad para decidir los estilo. En cualquier caso os dejamos una propuesta gráfica.
 
-## Entrega
+### Entrega
 
-**El límite de entrega es el lunes 11 de abril a las 14:00.**
+> **El límite de entrega es el lunes 11 de abril a las 14:00.**
 
 Solo debéis hacer commits y merges en la rama master de vuestro repositorio hasta la fecha límite. Si
 después del ejercicio queréis seguir trabajando sobre el ejercicio, lo podéis hacer en otra rama y no debéis
@@ -91,12 +107,5 @@ La evaluación solo se considerará terminada cuando:
 - Esté publicada en GitHub Pages y esté funcionando.
 - El enlace a GitHub Pages esté en la página página principal del repositorio, en la parte superior, al
   lado de la descripción.
-
-## Cómo arrancar el proyecto
-
-.  
-.  
-.  
-.
 
 _Info completa e imágenes en el .pdf incluido en documents_

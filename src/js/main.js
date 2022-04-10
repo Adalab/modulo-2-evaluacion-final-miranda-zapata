@@ -17,16 +17,21 @@ let drinks = [];
 let favoriteCocktails = [];
 
 // Funciones
+
+// Filtrar los resultados del input de búsqueda con una función manejadora del evento click del botón "buscar"
 function handleInputSearch(event) {
   event.preventDefault();
 
+  // Constante para el cóctel buscado
   const filterValue = inputSearch.value;
 
+  // Fetch al servidor de los cócteles
   fetch(
     `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${filterValue}`
   )
     .then((response) => response.json())
     .then((data) => {
+      // Guardar la información de los cócteles en su variable global
       drinks = data.drinks;
       if (inputSearch.value === '') {
         // alert('El campo de búsqueda no puede estar vacío');
@@ -37,6 +42,7 @@ function handleInputSearch(event) {
     });
 }
 
+// Función para generar una imagen por defecto, en caso de que no hubiera imagen original
 function generateDefaultImage(drinkItem) {
   let cocktailImage = '';
   if (drinkItem.strDrinkThumb !== null) {
@@ -47,10 +53,12 @@ function generateDefaultImage(drinkItem) {
   return cocktailImage;
 }
 
+// Pintar/renderizar la lista entera de cócteles
 function renderCocktailList() {
   let html = '';
 
   for (const drinkItem of drinks) {
+    // Variables que dan clases para resaltar el seleccionado como favorito
     let favoriteClass = '';
     let favoriteClassName = '';
     let imageSrc = generateDefaultImage(drinkItem);
@@ -74,9 +82,11 @@ function renderCocktailList() {
 
     cocktailList.innerHTML = html;
   }
+  // Listener para cada cóctel
   cocktailListener();
 }
 
+// Pintar/renderizar la lista de cócteles favoritos
 function renderFavoriteCocktails() {
   let html = '';
 
@@ -95,6 +105,7 @@ function renderFavoriteCocktails() {
   dislikedListener();
 }
 
+// Función manejadora borrar favoritos (uno a uno)
 function handleClickDislike(event) {
   const selectedCocktailId = event.currentTarget.id;
 
@@ -110,6 +121,7 @@ function handleClickDislike(event) {
   renderFavoriteCocktails();
 }
 
+// Listener borrar favoritos
 function dislikedListener() {
   const dislikes = document.querySelectorAll('.js-unfav');
   for (const btnDislike of dislikes) {
@@ -117,6 +129,7 @@ function dislikedListener() {
   }
 }
 
+// Función manejadora borrar favoritos (todos a la vez)
 function handleDislikeAllFavs(event) {
   event.preventDefault();
   // inputSearch.value = '';
@@ -127,7 +140,10 @@ function handleDislikeAllFavs(event) {
 }
 
 function handleClickCocktail(event) {
+  // Obtener a qué cóctel doy clic
   const selectedCocktailId = event.currentTarget.id;
+
+  // ¿Existe el cóctel en el listado de favoritos?
   const foundCocktail = drinks.find((favCocktail) => {
     return favCocktail.idDrink === selectedCocktailId;
   });
@@ -137,8 +153,10 @@ function handleClickCocktail(event) {
   });
 
   if (foundFavoriteIndex === -1) {
+    // No encontrado
     favoriteCocktails.push(foundCocktail);
   } else {
+    // Eliminar de la lista de favoritos
     favoriteCocktails.splice(foundFavoriteIndex, 1);
   }
 
@@ -148,6 +166,7 @@ function handleClickCocktail(event) {
   renderFavoriteCocktails();
 }
 
+// Listener (evento clic) para cada cóctel
 function cocktailListener() {
   const cocktailListItem = document.querySelectorAll('.js-cocktail');
   for (const listItem of cocktailListItem) {
@@ -155,6 +174,7 @@ function cocktailListener() {
   }
 }
 
+// Función manejadora para el botón de reset
 function handleClickReset(event) {
   event.preventDefault();
   inputSearch.value = '';
@@ -165,6 +185,7 @@ function handleClickReset(event) {
   localStorage.clear('favoriteCocktails');
 }
 
+// Función para guardar los cócteles favoritos en el Local Storage
 function getFavLocalStorage() {
   const savedFavorites = localStorage.getItem('favoriteCocktails');
   if (savedFavorites !== null) {
@@ -173,10 +194,10 @@ function getFavLocalStorage() {
   }
 }
 
-// Llamada a la función
+// Llamada a la función del Local Storage
 getFavLocalStorage();
 
-// Listeners
+// Listeners (evento clic) de los botones
 btnSubmit.addEventListener('click', handleInputSearch);
 btnReset.addEventListener('click', handleClickReset);
 btnDislikeAll.addEventListener('click', handleDislikeAllFavs);
