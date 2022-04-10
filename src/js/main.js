@@ -83,19 +83,27 @@ function renderFavoriteCocktails() {
     // let favoriteClassName = '';
     let imageSrc = generateDefaultImage(drinkItem);
 
-    html += `<li class="js-cocktail" id="${drinkItem.idDrink}">`;
-    html += `<i class="js-unfav fa-solid fa-heart-circle-xmark" id="unfav"></i>`;
+    html += `<li class="js-unfav" id="${drinkItem.idDrink}">`;
+    html += `<i class="fa-solid fa-heart-circle-xmark" id="unfav"></i>`;
     html += `<img alt="Cóctel" class="cocktailImg" src="${imageSrc}" />`;
     html += `<h3>${drinkItem.strDrink}</h3>`;
     html += `</li>`;
   }
   favoritesList.innerHTML = html;
-  // dislikedListener();
+  dislikedListener();
 }
 
-/* function handleClickDislike(event) {
+function handleClickDislike(event) {
   const selectedCocktailId = event.currentTarget.id;
-  favoriteCocktails.splice(selectedCocktailId, 1);
+
+  const foundFavoriteIndex = favoriteCocktails.findIndex((favCocktail) => {
+    return favCocktail.idDrink === selectedCocktailId;
+  });
+  if (foundFavoriteIndex !== -1) {
+    favoriteCocktails.splice(foundFavoriteIndex, 1);
+  }
+
+  localStorage.setItem('favoriteCocktails', JSON.stringify(favoriteCocktails));
   renderCocktailList();
   renderFavoriteCocktails();
 }
@@ -105,7 +113,7 @@ function dislikedListener() {
   for (const btnDislike of dislikes) {
     btnDislike.addEventListener('click', handleClickDislike);
   }
-} */
+}
 
 function handleClickCocktail(event) {
   const selectedCocktailId = event.currentTarget.id;
