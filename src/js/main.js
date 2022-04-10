@@ -84,12 +84,28 @@ function renderFavoriteCocktails() {
     let imageSrc = generateDefaultImage(drinkItem);
 
     html += `<li class="js-cocktail" id="${drinkItem.idDrink}">`;
+    html += `<i class="js-unfav fa-solid fa-heart-circle-xmark" id="unfav"></i>`;
     html += `<img alt="Cóctel" class="cocktailImg" src="${imageSrc}" />`;
     html += `<h3>${drinkItem.strDrink}</h3>`;
     html += `</li>`;
   }
   favoritesList.innerHTML = html;
+  // dislikedListener();
 }
+
+/* function handleClickDislike(event) {
+  const selectedCocktailId = event.currentTarget.id;
+  favoriteCocktails.splice(selectedCocktailId, 1);
+  renderCocktailList();
+  renderFavoriteCocktails();
+}
+
+function dislikedListener() {
+  const dislikes = document.querySelectorAll('.js-unfav');
+  for (const btnDislike of dislikes) {
+    btnDislike.addEventListener('click', handleClickDislike);
+  }
+} */
 
 function handleClickCocktail(event) {
   const selectedCocktailId = event.currentTarget.id;
