@@ -15,16 +15,8 @@ let drinks = [];
 let favoriteCocktails = [];
 
 // Funciones
-function validateInputValue() {
-  if (inputSearch.value === '') {
-    alert('Busca un cóctel para empezar');
-    handleClickReset();
-  }
-}
-
 function handleInputSearch(event) {
   event.preventDefault();
-  validateInputValue();
 
   const filterValue = inputSearch.value;
 
@@ -34,7 +26,12 @@ function handleInputSearch(event) {
     .then((response) => response.json())
     .then((data) => {
       drinks = data.drinks;
-      renderCocktailList();
+      if (inputSearch.value === '') {
+        // alert('El campo de búsqueda no puede estar vacío');
+        cocktailList.innerHTML = '...¡Nada por aquí!';
+      } else {
+        renderCocktailList();
+      }
     });
 }
 
@@ -82,13 +79,13 @@ function renderFavoriteCocktails() {
   let html = '';
 
   for (const drinkItem of favoriteCocktails) {
-    let favoriteClass = '';
-    let favoriteClassName = '';
+    // let favoriteClass = '';
+    // let favoriteClassName = '';
     let imageSrc = generateDefaultImage(drinkItem);
 
-    html += `<li class="${favoriteClass} js-cocktail" id="${drinkItem.idDrink}">`;
+    html += `<li class="js-cocktail" id="${drinkItem.idDrink}">`;
     html += `<img alt="Cóctel" class="cocktailImg" src="${imageSrc}" />`;
-    html += `<h3 class="${favoriteClassName}">${drinkItem.strDrink}</h3>`;
+    html += `<h3>${drinkItem.strDrink}</h3>`;
     html += `</li>`;
   }
   favoritesList.innerHTML = html;
