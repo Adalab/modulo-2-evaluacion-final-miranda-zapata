@@ -39,7 +39,7 @@ La aplicación de búsqueda de cócteles consta de dos partes:
 1. Un campo de texto y un botón para buscar un cóctel por su título.
 2. Un listado de resultados de búsqueda donde aparece la imagen del cóctel y el nombre.
 
-![diseño_sugerido](url)
+![diseño_sugerido](https://github.com/Adalab/modulo-2-evaluacion-final-miranda-zapata/blob/main/documents/modulo-2-evaluacion-final-enunciado-img.png?raw=true)
 
 ### 2. Búsqueda
 
