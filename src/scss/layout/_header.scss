@@ -20,11 +20,11 @@
     margin-right: 15px;
   }
 
-  // .inputSearch:focus {
-  //   border: solid 2px;
-  //   border-radius: 2px;
-  //   border-color: $verdigris;
-  // }
+  .inputSearch:focus {
+    border: solid 2px;
+    border-radius: 2px;
+    border-color: $verdigris;
+  }
 
   .submitBtn {
     background-color: $verdigris;

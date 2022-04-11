@@ -27,7 +27,7 @@ function handleInputSearch(event) {
       drinks = data.drinks;
       if (inputSearch.value === '') {
         // alert('El campo de búsqueda no puede estar vacío');
-        cocktailList.innerHTML = '...¡Nada por aquí!';
+        cocktailList.innerHTML = '...¡Hey! ¡Busca una bebida primero!';
       } else {
         renderCocktailList();
       }
