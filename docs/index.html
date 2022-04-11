@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Módulo 2. Evaluación final</title>
+
+    <script
+      src="https://kit.fontawesome.com/ad4e09850f.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="./assets/images/faviCocktail.png" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <h1 class="header__title">Buscador cócteles</h1>
+
+      <section class="search">
+        <form>
+          <input
+            class="inputSearch js-search"
+            name="search"
+            placeholder="P. ej. Sex on the Beach"
+            type="text"
+          />
+          <input class="submitBtn js-submitBtn" type="submit" value="Buscar" />
+          <input class="resetBtn js-resetBtn" type="reset" value="Reset" />
+        </form>
+      </section>
+    </header>
+
+
+    <main class="main">
+      <section class="sectionLists">
+        <article class="favorites">
+          <h2 class="favorites__title">Cócteles favoritos</h2>
+          <ul class="favorites__list js-favoritesList"></ul>
+          <button class="deleteFavs js-dislikeAll">
+            Borrar todos los favoritos
+          </button>
+        </article>
+
+        <article class="list">
+          <h2 class="listTitle">Lista</h2>
+          <ul class="cocktailList js-cocktailList"></ul>
+        </article>
+      </section>
+    </main>
+
+
+    <footer class="footer">
+      <aside class="copyright">&copy; Todos los derechos reservados</aside>
+    </footer>
+
+
+    <script src="./assets/js/main.js" type="text/JavaScript"></script>
+  </body>
+</html>
